@@ -436,6 +436,53 @@
             line-height: 1.6;
         }
         
+        /* Transportasi Section */
+        .transportasi-section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.08);
+            margin-top: 30px;
+        }
+        
+        .transport-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .transport-tab {
+            background: #f0f7ff;
+            border: 2px solid #e0e0e0;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .transport-tab:hover {
+            background: #e6f0ff;
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+        
+        .transport-tab.active {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+        
+        .transport-content {
+            display: none;
+        }
+        
+        .transport-content.active {
+            display: block;
+        }
+        
         /* Footer */
         footer {
             background: var(--primary);
@@ -516,6 +563,14 @@
             .section-header h2 {
                 font-size: 1.8rem;
             }
+            
+            .transport-tabs {
+                flex-direction: column;
+            }
+            
+            .transport-tab {
+                width: 100%;
+            }
         }
     </style>
 </head>
@@ -561,11 +616,11 @@
                         Dapatkan harga terbaik dengan layanan terpercaya dari MJR Travel Agency.
                     </p>
                     <div class="transport-icons">
-                        <div class="icon-box"><i class="fas fa-train"></i></div>
-                        <div class="icon-box"><i class="fas fa-plane"></i></div>
-                        <div class="icon-box"><i class="fas fa-bus"></i></div>
-                        <div class="icon-box"><i class="fas fa-ship"></i></div>
-                        <div class="icon-box"><i class="fas fa-shuttle-van"></i></div>
+                        <a href="#pesawat"><div class="icon-box"><i class="fas fa-plane"></i></div></a>
+                        <a href="#kereta"><div class="icon-box"><i class="fas fa-train"></i></div></a>
+                        <a href="#bus"><div class="icon-box"><i class="fas fa-bus"></i></div></a>
+                        <a href="#kapal"><div class="icon-box"><i class="fas fa-ship"></i></div></a>
+                        <a href="#shuttle"><div class="icon-box"><i class="fas fa-shuttle-van"></i></div></a>
                     </div>
                     <a href="#search" class="btn btn-hero">Cari Tiket Sekarang</a>
                     <a href="#about" class="btn btn-hero-outline">Pelajari Lebih Lanjut</a>
@@ -696,6 +751,221 @@
         </div>
     </section>
 
+    <!-- Transportasi Section -->
+    <section class="py-5" id="transportasi">
+        <div class="container">
+            <div class="section-header text-center mb-4">
+                <h2 class="fw-bold"><i class="fas fa-shipping-fast"></i> Transportasi</h2>
+                <p class="text-muted">Pilih jenis transportasi untuk melihat detailnya</p>
+            </div>
+            
+            <div class="transportasi-section">
+                <div class="transport-tabs">
+                    <div class="transport-tab active" onclick="showTransport('pesawat')">Pesawat</div>
+                    <div class="transport-tab" onclick="showTransport('kereta')">Kereta Api</div>
+                    <div class="transport-tab" onclick="showTransport('bus')">Bus</div>
+                    <div class="transport-tab" onclick="showTransport('kapal')">Kapal Laut</div>
+                    <div class="transport-tab" onclick="showTransport('shuttle')">Shuttle</div>
+                </div>
+                
+                <div class="transport-content active" id="pesawat-content">
+                    <div class="table-responsive">
+                        <table class="table table-hover table-striped">
+                            <thead class="table-light">
+                                <tr>
+                                    <th><i class="fas fa-plane"></i> Rute</th>
+                                    <th><i class="fas fa-building"></i> Provider</th>
+                                    <th><i class="fas fa-clock"></i> Berangkat</th>
+                                    <th><i class="fas fa-clock"></i> Tiba</th>
+                                    <th class="text-end"><i class="fas fa-tag"></i> Harga</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Jakarta → Bali</td>
+                                    <td>Garuda Indonesia</td>
+                                    <td>08:00</td>
+                                    <td>10:30</td>
+                                    <td class="text-end">Rp 850.000</td>
+                                </tr>
+                                <tr>
+                                    <td>Jakarta → Bali</td>
+                                    <td>Lion Air</td>
+                                    <td>10:00</td>
+                                    <td>12:30</td>
+                                    <td class="text-end">Rp 650.000</td>
+                                </tr>
+                                <tr>
+                                    <td>Jakarta → Surabaya</td>
+                                    <td>Garuda Indonesia</td>
+                                    <td>09:00</td>
+                                    <td>10:30</td>
+                                    <td class="text-end">Rp 450.000</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="transport-content" id="kereta-content">
+                    <div class="table-responsive">
+                        <table class="table table-hover table-striped">
+                            <thead class="table-light">
+                                <tr>
+                                    <th><i class="fas fa-train"></i> Rute</th>
+                                    <th><i class="fas fa-building"></i> Provider</th>
+                                    <th><i class="fas fa-clock"></i> Berangkat</th>
+                                    <th><i class="fas fa-clock"></i> Tiba</th>
+                                    <th class="text-end"><i class="fas fa-tag"></i> Harga</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Jakarta → Bandung</td>
+                                    <td>Argo Parahyangan</td>
+                                    <td>08:00</td>
+                                    <td>11:00</td>
+                                    <td class="text-end">Rp 120.000</td>
+                                </tr>
+                                <tr>
+                                    <td>Jakarta → Bandung</td>
+                                    <td>Pangrango</td>
+                                    <td>10:00</td>
+                                    <td>13:00</td>
+                                    <td class="text-end">Rp 90.000</td>
+                                </tr>
+                                <tr>
+                                    <td>Jakarta → Yogyakarta</td>
+                                    <td>Gajayana</td>
+                                    <td>09:00</td>
+                                    <td>16:00</td>
+                                    <td class="text-end">Rp 250.000</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="transport-content" id="bus-content">
+                    <div class="table-responsive">
+                        <table class="table table-hover table-striped">
+                            <thead class="table-light">
+                                <tr>
+                                    <th><i class="fas fa-bus"></i> Rute</th>
+                                    <th><i class="fas fa-building"></i> Provider</th>
+                                    <th><i class="fas fa-clock"></i> Berangkat</th>
+                                    <th><i class="fas fa-clock"></i> Tiba</th>
+                                    <th class="text-end"><i class="fas fa-tag"></i> Harga</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Jakarta → Bandung</td>
+                                    <td>Primajasa</td>
+                                    <td>08:00</td>
+                                    <td>11:30</td>
+                                    <td class="text-end">Rp 85.000</td>
+                                </tr>
+                                <tr>
+                                    <td>Jakarta → Bandung</td>
+                                    <td>X-Trans</td>
+                                    <td>10:00</td>
+                                    <td>13:30</td>
+                                    <td class="text-end">Rp 100.000</td>
+                                </tr>
+                                <tr>
+                                    <td>Jakarta → Yogyakarta</td>
+                                    <td>Rosalia Indah</td>
+                                    <td>10:00</td>
+                                    <td>17:00</td>
+                                    <td class="text-end">Rp 220.000</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="transport-content" id="kapal-content">
+                    <div class="table-responsive">
+                        <table class="table table-hover table-striped">
+                            <thead class="table-light">
+                                <tr>
+                                    <th><i class="fas fa-ship"></i> Rute</th>
+                                    <th><i class="fas fa-building"></i> Provider</th>
+                                    <th><i class="fas fa-clock"></i> Berangkat</th>
+                                    <th><i class="fas fa-clock"></i> Tiba</th>
+                                    <th class="text-end"><i class="fas fa-tag"></i> Harga</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Jakarta → Batam</td>
+                                    <td>Pelayaran Nasional</td>
+                                    <td>09:00</td>
+                                    <td>15:00</td>
+                                    <td class="text-end">Rp 350.000</td>
+                                </tr>
+                                <tr>
+                                    <td>Jakarta → Batam</td>
+                                    <td>Dunia Baru</td>
+                                    <td>14:00</td>
+                                    <td>20:00</td>
+                                    <td class="text-end">Rp 420.000</td>
+                                </tr>
+                                <tr>
+                                    <td>Bali → Lombok</td>
+                                    <td>ASDP Indonesia</td>
+                                    <td>08:00</td>
+                                    <td>11:00</td>
+                                    <td class="text-end">Rp 280.000</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="transport-content" id="shuttle-content">
+                    <div class="table-responsive">
+                        <table class="table table-hover table-striped">
+                            <thead class="table-light">
+                                <tr>
+                                    <th><i class="fas fa-shuttle-van"></i> Rute</th>
+                                    <th><i class="fas fa-building"></i> Provider</th>
+                                    <th><i class="fas fa-clock"></i> Berangkat</th>
+                                    <th><i class="fas fa-clock"></i> Tiba</th>
+                                    <th class="text-end"><i class="fas fa-tag"></i> Harga</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Jakarta → Bandara Soetta</td>
+                                    <td>Traveloka Shuttle</td>
+                                    <td>07:00</td>
+                                    <td>08:00</td>
+                                    <td class="text-end">Rp 70.000</td>
+                                </tr>
+                                <tr>
+                                    <td>Jakarta → Bandara Soetta</td>
+                                    <td>Blue Bird</td>
+                                    <td>09:00</td>
+                                    <td>10:00</td>
+                                    <td class="text-end">Rp 65.000</td>
+                                </tr>
+                                <tr>
+                                    <td>Jakarta → Bandung</td>
+                                    <td>X-Trans Shuttle</td>
+                                    <td>08:00</td>
+                                    <td>11:00</td>
+                                    <td class="text-end">Rp 150.000</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Statistics Section -->
     <section class="py-5 bg-light" id="stats">
         <div class="container">
@@ -711,7 +981,7 @@
                             <i class="fas fa-plane"></i>
                         </div>
                         <h4>Pesawat</h4>
-                        <p class="stat-value" id="avgPesawat">Rp 0</p>
+                        <p class="stat-value" id="avgPesawat">Rp 750.000</p>
                         <small class="text-muted">Harga rata-rata</small>
                     </div>
                 </div>
@@ -721,7 +991,7 @@
                             <i class="fas fa-train"></i>
                         </div>
                         <h4>Kereta Api</h4>
-                        <p class="stat-value" id="avgKereta">Rp 0</p>
+                        <p class="stat-value" id="avgKereta">Rp 135.000</p>
                         <small class="text-muted">Harga rata-rata</small>
                     </div>
                 </div>
@@ -731,7 +1001,7 @@
                             <i class="fas fa-bus"></i>
                         </div>
                         <h4>Bus</h4>
-                        <p class="stat-value" id="avgBus">Rp 0</p>
+                        <p class="stat-value" id="avgBus">Rp 95.000</p>
                         <small class="text-muted">Harga rata-rata</small>
                     </div>
                 </div>
@@ -816,16 +1086,17 @@
                         <a href="#search">Cari Tiket</a>
                         <a href="#stats">Statistik</a>
                         <a href="#about">Tentang Kami</a>
+                        <a href="#transportasi">Transportasi</a>
                     </div>
                 </div>
                 <div class="col-md-2 mb-4">
                     <h5 class="mb-3">Transportasi</h5>
                     <div class="footer-links">
-                        <a href="#">Pesawat</a>
-                        <a href="#">Kereta Api</a>
-                        <a href="#">Bus</a>
-                        <a href="#">Kapal Laut</a>
-                        <a href="#">Shuttle</a>
+                        <a href="#" onclick="showTransport('pesawat')">Pesawat</a>
+                        <a href="#" onclick="showTransport('kereta')">Kereta Api</a>
+                        <a href="#" onclick="showTransport('bus')">Bus</a>
+                        <a href="#" onclick="showTransport('kapal')">Kapal Laut</a>
+                        <a href="#" onclick="showTransport('shuttle')">Shuttle</a>
                     </div>
                 </div>
                 <div class="col-md-4 mb-4">
@@ -1017,6 +1288,27 @@
             document.getElementById('destination').value = '';
             document.getElementById('travelDate').value = '';
             displayResults(sampleData);
+        }
+        
+        // Transportasi Section Functions
+        function showTransport(type) {
+            // Remove active class from all tabs
+            const tabs = document.querySelectorAll('.transport-tab');
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Add active class to clicked tab
+            event.target.classList.add('active');
+            
+            // Hide all content
+            const contents = document.querySelectorAll('.transport-content');
+            contents.forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Show selected content
+            document.getElementById(`${type}-content`).classList.add('active');
         }
     </script>
 </body>
