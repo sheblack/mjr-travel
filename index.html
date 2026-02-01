@@ -3,934 +3,1020 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MJR Travel - Tiket Perjalanan Terlengkap Indonesia</title>
-    <!-- Google Fonts untuk tipografi profesional -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Font Awesome untuk Ikon -->
+    <title>MJR Travel Agency - Cari Tiket Tanpa Ribet</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* --- CSS VARIABLES & RESET --- */
         :root {
-            --primary-color: #0056b3; /* Biru maskapai profesional */
-            --primary-dark: #004494;
-            --accent-color: #ff9900; /* Oranye untuk CTA (Call to Action) */
-            --accent-hover: #e68a00;
-            --text-dark: #1a1a1a;
-            --text-light: #666666;
-            --bg-light: #f4f7f9;
-            --white: #ffffff;
-            --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
-            --shadow-md: 0 4px 16px rgba(0,0,0,0.12);
-            --shadow-lg: 0 8px 24px rgba(0,0,0,0.15);
-            --radius: 8px;
-            --transition: all 0.3s ease;
+            --primary: #1a3a6c;
+            --secondary: #2c5282;
+            --accent: #4a90e2;
+            --light: #f8f9fa;
+            --dark: #212529;
         }
-
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
+        
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-light);
-            color: var(--text-dark);
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
             line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        a { text-decoration: none; color: inherit; transition: var(--transition); }
-        ul { list-style: none; }
-        button, input, select { font-family: inherit; }
-
-        /* --- HEADER & NAVIGATION --- */
-        header {
-            background-color: var(--white);
-            box-shadow: var(--shadow-sm);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .nav-wrapper {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 80px;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--primary-color);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .logo i { font-size: 1.8rem; }
-
-        .nav-links {
-            display: flex;
-            gap: 30px;
-        }
-
-        .nav-links a {
-            font-weight: 500;
-            color: var(--text-dark);
-            font-size: 0.95rem;
-        }
-
-        .nav-links a:hover { color: var(--primary-color); }
-
-        .auth-buttons {
-            display: flex;
-            gap: 15px;
-        }
-
-        .btn-outline {
-            padding: 8px 20px;
-            border: 1px solid var(--primary-color);
-            color: var(--primary-color);
-            border-radius: var(--radius);
-            font-weight: 600;
-            background: transparent;
-            cursor: pointer;
-        }
-
-        .btn-outline:hover { background-color: rgba(0, 86, 179, 0.05); }
-
-        .btn-primary {
-            padding: 8px 20px;
-            background-color: var(--accent-color);
-            color: var(--white);
-            border: none;
-            border-radius: var(--radius);
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .btn-primary:hover { background-color: var(--accent-hover); }
-
-        /* --- HERO SECTION --- */
-        .hero {
-            background: linear-gradient(135deg, rgba(0, 86, 179, 0.85), rgba(0, 30, 60, 0.8)), 
-                        url('https://picsum.photos/seed/travel2/1920/1080') center/cover no-repeat;
-            height: 550px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: var(--white);
-            position: relative;
-        }
-
-        .hero-content {
-            max-width: 800px;
-            padding: 20px;
-            margin-top: 20px;
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 15px;
-            font-weight: 700;
-        }
-
-        .hero p {
-            font-size: 1.1rem;
-            margin-bottom: 40px;
-            opacity: 0.9;
-        }
-
-        /* --- SEARCH WIDGET (CORE) --- */
-        .search-widget-container {
-            margin-top: -60px;
-            position: relative;
-            z-index: 10;
-            padding-bottom: 40px;
-        }
-
-        .search-widget {
-            background: var(--white);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow-lg);
-            padding: 5px;
-            overflow: hidden;
-        }
-
-        /* Tabs */
-        .tabs {
-            display: flex;
-            background-color: #f0f2f5;
-            padding: 5px;
-            border-bottom: 1px solid #eee;
-        }
-
-        .tab-btn {
-            flex: 1;
-            padding: 15px;
-            border: none;
-            background: none;
-            cursor: pointer;
-            font-weight: 600;
-            color: var(--text-light);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            border-radius: var(--radius) var(--radius) 0 0;
-            transition: var(--transition);
-        }
-
-        .tab-btn i { font-size: 1.2rem; }
-
-        .tab-btn:hover { background-color: rgba(0,0,0,0.03); }
-
-        .tab-btn.active {
-            background-color: var(--white);
-            color: var(--primary-color);
-            border-top: 3px solid var(--primary-color);
-        }
-
-        /* Form Content */
-        .tab-content {
-            display: none;
-            padding: 25px 30px;
-            animation: fadeIn 0.4s ease;
-        }
-
-        .tab-content.active { display: block; }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(5px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            align-items: end;
-        }
-
-        .input-group {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            position: relative;
-        }
-
-        .input-group label {
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--text-light);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .input-wrapper {
-            position: relative;
-        }
-
-        .input-wrapper i {
-            position: absolute;
-            left: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #999;
-        }
-
-        .input-wrapper input, .input-wrapper select {
-            width: 100%;
-            padding: 12px 12px 12px 40px;
-            border: 1px solid #ddd;
-            border-radius: var(--radius);
-            font-size: 1rem;
-            outline: none;
-            transition: var(--transition);
-        }
-
-        .input-wrapper input:focus, .input-wrapper select:focus {
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.1);
-        }
-
-        .btn-search {
-            background-color: var(--primary-color);
-            color: var(--white);
-            border: none;
-            padding: 13px 30px;
-            border-radius: var(--radius);
-            font-weight: 600;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            height: 48px;
-        }
-
-        .btn-search:hover { background-color: var(--primary-dark); transform: translateY(-1px); }
-
-        /* --- REALTIME RESULTS SECTION --- */
-        #results-section {
-            display: none; /* Hidden by default */
-            padding: 60px 0;
-            min-height: 400px;
-        }
-
-        .section-title {
-            font-size: 1.8rem;
-            margin-bottom: 25px;
-            color: var(--text-dark);
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .loading-spinner {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            gap: 20px;
-            padding: 50px;
-        }
-
-        .spinner {
-            width: 50px;
-            height: 50px;
-            border: 5px solid #f3f3f3;
-            border-top: 5px solid var(--primary-color);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-
-        .ticket-list {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .ticket-card {
-            background: var(--white);
-            border-radius: var(--radius);
-            padding: 20px;
-            box-shadow: var(--shadow-sm);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border: 1px solid #eee;
-            transition: var(--transition);
-        }
-
-        .ticket-card:hover {
-            box-shadow: var(--shadow-md);
-            border-color: var(--primary-color);
-        }
-
-        .ticket-info {
-            display: flex;
-            gap: 30px;
-            align-items: center;
-        }
-
-        .carrier-logo {
-            width: 60px;
-            height: 60px;
-            background-color: #eee;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            color: var(--primary-color);
-        }
-
-        .route-details {
-            display: flex;
-            gap: 40px;
-            align-items: center;
-        }
-
-        .route-point h3 { font-size: 1.2rem; font-weight: 700; }
-        .route-point span { font-size: 0.9rem; color: var(--text-light); }
-
-        .duration {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            color: var(--text-light);
-            font-size: 0.8rem;
-            min-width: 100px;
         }
         
-        .duration-line {
-            width: 100%;
-            height: 2px;
-            background: #ddd;
-            margin: 5px 0;
+        /* Navbar */
+        .navbar {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            padding: 0.5rem 0;
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: white !important;
+            display: flex;
+            align-items: center;
+        }
+        
+        .navbar-brand i {
+            margin-right: 10px;
+            font-size: 1.6rem;
+        }
+        
+        .nav-link {
+            color: rgba(255,255,255,0.85) !important;
+            font-weight: 500;
+            padding: 0.8rem 1rem;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+        
+        .nav-link:hover {
+            background: rgba(255,255,255,0.1);
+            color: white !important;
+        }
+        
+        /* Hero Section */
+        .hero-banner {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%), url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1920&h=1080&fit=crop');
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
             position: relative;
         }
-        .duration-line::after {
-            content: '✈'; /* Placeholder icon */
+        
+        .hero-overlay {
             position: absolute;
-            top: -8px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #fff;
-            color: var(--primary-color);
-            padding: 0 5px;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(26, 58, 108, 0.85) 0%, rgba(44, 82, 130, 0.9) 100%);
         }
-
-        .ticket-action {
-            text-align: right;
+        
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            color: white;
+            padding-top: 3rem;
+            padding-bottom: 5rem;
         }
-
-        .price {
-            display: block;
-            font-size: 1.4rem;
-            color: var(--accent-color);
+        
+        .brand-name {
+            font-size: 3.5rem;
             font-weight: 800;
-            margin-bottom: 10px;
+            background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            display: block;
+            line-height: 1.2;
         }
-
-        /* --- FEATURES / PROMO --- */
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        
+        .slogan {
+            font-size: 2.2rem;
+            font-weight: 600;
+            color: #ffd700;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+            display: block;
+            margin-top: 10px;
+        }
+        
+        .hero-text {
+            font-size: 1.2rem;
+            margin: 2rem 0;
+            line-height: 1.8;
+            opacity: 0.95;
+            max-width: 800px;
+        }
+        
+        .transport-icons {
+            display: flex;
             gap: 30px;
-            padding: 40px 0;
+            margin: 2rem 0;
+            justify-content: center;
         }
-
-        .feature-card {
+        
+        .icon-box {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(1px);
+            padding: 25px 30px;
+            border-radius: 20px;
+            font-size: 3rem;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            width: 100px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .icon-box:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        }
+        
+        .btn-hero {
+            background: linear-gradient(135deg, #ffd700 0%, #ffcc00 100%);
+            color: var(--primary);
+            font-weight: 700;
+            padding: 15px 40px;
+            border-radius: 50px;
+            border: none;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(255, 215, 0, 0.4);
+            margin-top: 1.5rem;
+        }
+        
+        .btn-hero:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(255, 215, 0, 0.6);
+        }
+        
+        .btn-hero-outline {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            font-weight: 700;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            margin-left: 15px;
+        }
+        
+        .btn-hero-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: white;
+            transform: translateY(-3px);
+        }
+        
+        /* Search Section */
+        .search-container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 50px rgba(0,0,0,.15);
+            margin-top: -50px;
+            position: relative;
+            z-index: 100;
+        }
+        
+        .search-header h2 {
+            color: var(--primary);
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
             text-align: center;
-            padding: 30px;
-            background: var(--white);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow-sm);
-            transition: var(--transition);
         }
-
-        .feature-card:hover { transform: translateY(-5px); }
-
+        
+        .search-header p {
+            font-size: 1.1rem;
+            color: #666;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .form-control, .form-select {
+            border-radius: 12px;
+            border: 2px solid #e0e0e0;
+            padding: 14px 15px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            height: 55px;
+        }
+        
+        .form-control:focus, .form-select:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 0.2rem rgba(74, 144, 226, 0.25);
+        }
+        
+        .btn-search {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            font-weight: 700;
+            padding: 15px 30px;
+            border-radius: 12px;
+            border: none;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(44, 82, 130, 0.3);
+            height: 55px;
+        }
+        
+        .btn-search:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(44, 82, 130, 0.5);
+        }
+        
+        .btn-reset {
+            background: white;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            font-weight: 700;
+            padding: 15px 30px;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            height: 55px;
+        }
+        
+        .btn-reset:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        /* Results Section */
+        .section-header {
+            margin-bottom: 3rem;
+        }
+        
+        .section-header h2 {
+            color: var(--primary);
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        
+        .section-header p {
+            font-size: 1.2rem;
+            color: #666;
+            text-align: center;
+        }
+        
+        .results-container {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.08);
+        }
+        
+        .table {
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        
+        .table thead th {
+            font-size: 1.05rem;
+            font-weight: 600;
+            padding: 18px 15px;
+            background-color: #f0f7ff;
+            border-bottom: 3px solid var(--accent);
+        }
+        
+        .table tbody tr {
+            transition: all 0.2s ease;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .table tbody tr:nth-child(even) {
+            background-color: #f8fafc;
+        }
+        
+        .table tbody tr:hover {
+            background-color: #e6f0ff !important;
+            transform: scale(1.005);
+        }
+        
+        .table td {
+            padding: 16px 15px;
+            vertical-align: middle;
+            font-size: 1.05rem;
+        }
+        
+        .transport-type {
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+        }
+        
+        .transport-type i {
+            margin-right: 10px;
+            font-size: 1.3rem;
+        }
+        
+        .price {
+            font-weight: 700;
+            color: var(--accent);
+            font-size: 1.1rem;
+        }
+        
+        /* Statistics Section */
+        .stat-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #f0f0f0;
+        }
+        
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            border-color: #e0e0e0;
+        }
+        
+        .stat-icon {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            opacity: 0.8;
+        }
+        
+        .stat-card-plane .stat-icon {
+            color: var(--primary);
+        }
+        
+        .stat-card-train .stat-icon {
+            color: #2c5282;
+        }
+        
+        .stat-card-bus .stat-icon {
+            color: #e53e3e;
+        }
+        
+        .stat h4 {
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin: 10px 0;
+        }
+        
+        /* Features Section */
+        .feature-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            border-color: #e0e0e0;
+        }
+        
         .feature-icon {
-            width: 70px;
-            height: 70px;
-            background-color: rgba(0, 86, 179, 0.1);
-            color: var(--primary-color);
+            width: 100px;
+            height: 100px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.8rem;
             margin: 0 auto 20px;
+            font-size: 2.5rem;
+            color: white;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
         }
-
-        /* --- FOOTER --- */
+        
+        .feature-card h5 {
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .feature-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        /* Footer */
         footer {
-            background-color: #0b1e36;
-            color: #ccc;
-            padding: 60px 0 20px;
-            margin-top: 60px;
+            background: var(--primary);
+            color: white;
+            padding: 40px 0 20px;
         }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
+        
+        .footer-content {
+            margin-bottom: 30px;
         }
-
-        .footer-col h4 {
-            color: var(--white);
+        
+        .footer-logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
             margin-bottom: 20px;
-            font-size: 1.1rem;
         }
-
-        .footer-col ul li { margin-bottom: 10px; }
-        .footer-col ul li a:hover { color: var(--white); text-decoration: underline; }
-
-        .footer-bottom {
+        
+        .footer-logo i {
+            margin-right: 10px;
+            font-size: 1.8rem;
+        }
+        
+        .footer-links a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            display: block;
+            margin: 10px 0;
+            transition: all 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.4rem;
+            margin: 0 10px;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            transform: translateY(-5px);
+            color: #ffd700;
+        }
+        
+        .copyright {
             border-top: 1px solid rgba(255,255,255,0.1);
             padding-top: 20px;
             text-align: center;
+            color: rgba(255,255,255,0.6);
             font-size: 0.9rem;
         }
-
-        /* --- RESPONSIVE --- */
+        
+        /* Responsive */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2rem; }
-            .nav-links { display: none; } /* Simplified for mobile demo */
-            .ticket-card { flex-direction: column; align-items: flex-start; gap: 20px; }
-            .ticket-action { text-align: left; width: 100%; display: flex; justify-content: space-between; align-items: center; }
-            .btn-search { width: 100%; }
+            .brand-name {
+                font-size: 2.5rem;
+            }
+            
+            .slogan {
+                font-size: 1.5rem;
+            }
+            
+            .btn-hero,
+            .btn-hero-outline {
+                width: 100%;
+                margin: 10px 0;
+            }
+            
+            .search-container {
+                padding: 25px;
+            }
+            
+            .section-header h2 {
+                font-size: 1.8rem;
+            }
         }
     </style>
 </head>
 <body>
-
-    <!-- Header -->
-    <header>
-        <div class="container nav-wrapper">
-            <a href="#" class="logo">
-                <i class="fa-solid fa-paper-plane"></i> MJR Travel
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#home">
+                <i class="fas fa-plane-departure"></i> MJR Travel Agency
             </a>
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="#">Beranda</a></li>
-                    <li><a href="#">Destinasi</a></li>
-                    <li><a href="#">Promo</a></li>
-                    <li><a href="#">Cek Pesanan</a></li>
-                    <li><a href="#">Bantuan</a></li>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home"><i class="fas fa-home"></i> Beranda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#search"><i class="fas fa-search"></i> Cari Tiket</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#stats"><i class="fas fa-chart-line"></i> Statistik</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about"><i class="fas fa-info-circle"></i> Tentang</a>
+                    </li>
                 </ul>
-            </nav>
-            <div class="auth-buttons">
-                <button class="btn-outline">Masuk</button>
-                <button class="btn-primary">Daftar</button>
             </div>
         </div>
-    </header>
+    </nav>
 
-    <main>
-        <!-- Hero Section -->
-        <section class="hero">
-            <div class="hero-content">
-                <h1>Jelajahi Keindahan Indonesia</h1>
-                <p>Platform pemesanan tiket transportasi terlengkap, termurah, dan terpercaya. Pesawat, Kereta, Bus, hingga Kapal Laut dalam satu genggaman.</p>
+    <!-- Hero Banner Section -->
+    <section class="hero-banner" id="home">
+        <div class="hero-overlay"></div>
+        <div class="container">
+            <div class="row align-items-center min-vh-100">
+                <div class="col-lg-6 text-white">
+                    <h1 class="brand-name">MJR Travel Agency</h1>
+                    <p class="slogan">Cari Tiket Tanpa Ribet</p>
+                    <p class="hero-text">
+                        Bandingkan harga tiket pesawat, kereta, bus, kapal laut, dan shuttle di seluruh Indonesia. 
+                        Dapatkan harga terbaik dengan layanan terpercaya dari MJR Travel Agency.
+                    </p>
+                    <div class="transport-icons">
+                        <div class="icon-box"><i class="fas fa-train"></i></div>
+                        <div class="icon-box"><i class="fas fa-plane"></i></div>
+                        <div class="icon-box"><i class="fas fa-bus"></i></div>
+                        <div class="icon-box"><i class="fas fa-ship"></i></div>
+                        <div class="icon-box"><i class="fas fa-shuttle-van"></i></div>
+                    </div>
+                    <a href="#search" class="btn btn-hero">Cari Tiket Sekarang</a>
+                    <a href="#about" class="btn btn-hero-outline">Pelajari Lebih Lanjut</a>
+                </div>
+                <div class="col-lg-6">
+                    <div class="hero-illustration">
+                        <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=600&auto=format" 
+                             alt="Transportasi Indonesia" class="img-fluid rounded-4 shadow-lg">
+                    </div>
+                </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Search Widget (Realtime Simulation) -->
-        <div class="container search-widget-container">
-            <div class="search-widget">
-                <div class="tabs">
-                    <button class="tab-btn active" onclick="switchTab('pesawat', this)">
-                        <i class="fa-solid fa-plane"></i> Pesawat
-                    </button>
-                    <button class="tab-btn" onclick="switchTab('kereta', this)">
-                        <i class="fa-solid fa-train"></i> Kereta Api
-                    </button>
-                    <button class="tab-btn" onclick="switchTab('bus', this)">
-                        <i class="fa-solid fa-bus"></i> Bus & Travel
-                    </button>
-                    <button class="tab-btn" onclick="switchTab('kapal', this)">
-                        <i class="fa-solid fa-ship"></i> Kapal Laut
-                    </button>
+    <!-- Search Section -->
+    <section class="py-5" id="search">
+        <div class="container">
+            <div class="search-container">
+                <div class="search-header text-center mb-4">
+                    <h2 class="fw-bold mb-2">🔍 Cari Tiket Transportasi</h2>
+                    <p class="text-muted">Pilih transportasi, tujuan, dan dapatkan harga terbaik</p>
                 </div>
-
-                <!-- Form Pesawat -->
-                <div id="pesawat" class="tab-content active">
-                    <form onsubmit="handleSearch(event, 'Pesawat')">
-                        <div class="form-row">
-                            <div class="input-group">
-                                <label>Dari</label>
-                                <div class="input-wrapper">
-                                    <i class="fa-solid fa-location-dot"></i>
-                                    <input type="text" placeholder="Jakarta (CGK)" required>
-                                </div>
+                
+                <div class="search-form-wrapper">
+                    <form id="searchForm" class="row g-3">
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label class="form-label"><i class="fas fa-car"></i> Transportasi</label>
+                                <select class="form-select form-select-lg" id="transportType">
+                                    <option value="all">Semua Transportasi</option>
+                                    <option value="pesawat">✈️ Pesawat</option>
+                                    <option value="kereta">🚂 Kereta</option>
+                                    <option value="bus">🚌 Bus</option>
+                                    <option value="kapal">⛴️ Kapal Laut</option>
+                                    <option value="shuttle">🚐 Shuttle</option>
+                                </select>
                             </div>
-                            <div class="input-group">
-                                <label>Ke</label>
-                                <div class="input-wrapper">
-                                    <i class="fa-solid fa-location-crosshairs"></i>
-                                    <input type="text" placeholder="Bali (DPS)" required>
-                                </div>
-                            </div>
-                            <div class="input-group">
-                                <label>Berangkat</label>
-                                <div class="input-wrapper">
-                                    <i class="fa-regular fa-calendar"></i>
-                                    <input type="date" required>
-                                </div>
-                            </div>
-                            <div class="input-group">
-                                <label>Penumpang</label>
-                                <div class="input-wrapper">
-                                    <i class="fa-solid fa-user"></i>
-                                    <select>
-                                        <option>1 Dewasa</option>
-                                        <option>2 Dewasa</option>
-                                        <option>1 Dewasa, 1 Anak</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <button type="submit" class="btn-search">
-                                <i class="fa-solid fa-magnifying-glass"></i> Cari Penerbangan
-                            </button>
                         </div>
-                    </form>
-                </div>
-
-                <!-- Form Kereta -->
-                <div id="kereta" class="tab-content">
-                    <form onsubmit="handleSearch(event, 'Kereta Api')">
-                        <div class="form-row">
-                            <div class="input-group">
-                                <label>Stasiun Asal</label>
-                                <div class="input-wrapper">
-                                    <i class="fa-solid fa-train-subway"></i>
-                                    <input type="text" placeholder="Gambir (GMR)" required>
-                                </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="form-label"><i class="fas fa-map-marker-alt"></i> Dari</label>
+                                <select class="form-select form-select-lg" id="origin">
+                                    <option value="">Pilih kota asal</option>
+                                    <option value="Jakarta">Jakarta</option>
+                                    <option value="Surabaya">Surabaya</option>
+                                    <option value="Bandung">Bandung</option>
+                                    <option value="Yogyakarta">Yogyakarta</option>
+                                    <option value="Bali">Bali</option>
+                                    <option value="Medan">Medan</option>
+                                    <option value="Makassar">Makassar</option>
+                                    <option value="Semarang">Semarang</option>
+                                </select>
                             </div>
-                            <div class="input-group">
-                                <label>Stasiun Tujuan</label>
-                                <div class="input-wrapper">
-                                    <i class="fa-solid fa-map-pin"></i>
-                                    <input type="text" placeholder="Yogyakarta (YK)" required>
-                                </div>
-                            </div>
-                            <div class="input-group">
-                                <label>Tanggal</label>
-                                <div class="input-wrapper">
-                                    <i class="fa-regular fa-calendar"></i>
-                                    <input type="date" required>
-                                </div>
-                            </div>
-                            <div class="input-group">
-                                <label>Kelas</label>
-                                <div class="input-wrapper">
-                                    <i class="fa-solid fa-couch"></i>
-                                    <select>
-                                        <option>Ekonomi</option>
-                                        <option>Bisnis</option>
-                                        <option>Eksekutif</option>
-                                        <option>Luxury</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <button type="submit" class="btn-search">
-                                <i class="fa-solid fa-magnifying-glass"></i> Cari Tiket Kereta
-                            </button>
                         </div>
-                    </form>
-                </div>
-
-                <!-- Form Bus -->
-                <div id="bus" class="tab-content">
-                    <form onsubmit="handleSearch(event, 'Bus')">
-                        <div class="form-row">
-                            <div class="input-group">
-                                <label>Kota Asal</label>
-                                <div class="input-wrapper">
-                                    <i class="fa-solid fa-bus"></i>
-                                    <input type="text" placeholder="Jakarta" required>
-                                </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="form-label"><i class="fas fa-map-marker-alt"></i> Tujuan</label>
+                                <select class="form-select form-select-lg" id="destination">
+                                    <option value="">Pilih kota tujuan</option>
+                                    <option value="Jakarta">Jakarta</option>
+                                    <option value="Surabaya">Surabaya</option>
+                                    <option value="Bandung">Bandung</option>
+                                    <option value="Yogyakarta">Yogyakarta</option>
+                                    <option value="Bali">Bali</option>
+                                    <option value="Medan">Medan</option>
+                                    <option value="Makassar">Makassar</option>
+                                    <option value="Semarang">Semarang</option>
+                                </select>
                             </div>
-                            <div class="input-group">
-                                <label>Kota Tujuan</label>
-                                <div class="input-wrapper">
-                                    <i class="fa-solid fa-bus-simple"></i>
-                                    <input type="text" placeholder="Bandung" required>
-                                </div>
-                            </div>
-                            <div class="input-group">
-                                <label>Tanggal</label>
-                                <div class="input-wrapper">
-                                    <i class="fa-regular fa-calendar"></i>
-                                    <input type="date" required>
-                                </div>
-                            </div>
-                            <div class="input-group">
-                                <label>Operator</label>
-                                <div class="input-wrapper">
-                                    <i class="fa-solid fa-ticket"></i>
-                                    <select>
-                                        <option>Semua Operator</option>
-                                        <option>Rosalia Indah</option>
-                                        <option>Sinar Jaya</option>
-                                        <option>Harapan Jaya</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <button type="submit" class="btn-search">
-                                <i class="fa-solid fa-magnifying-glass"></i> Cari Tiket Bus
-                            </button>
                         </div>
-                    </form>
-                </div>
-
-                <!-- Form Kapal -->
-                <div id="kapal" class="tab-content">
-                    <form onsubmit="handleSearch(event, 'Kapal Laut')">
-                        <div class="form-row">
-                            <div class="input-group">
-                                <label>Pelabuhan Asal</label>
-                                <div class="input-wrapper">
-                                    <i class="fa-solid fa-anchor"></i>
-                                    <input type="text" placeholder="Tanjung Priok" required>
-                                </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label class="form-label"><i class="fas fa-calendar"></i> Tanggal</label>
+                                <input type="date" class="form-control form-control-lg" 
+                                       id="travelDate" min="2024-01-01">
                             </div>
-                            <div class="input-group">
-                                <label>Pelabuhan Tujuan</label>
-                                <div class="input-wrapper">
-                                    <i class="fa-solid fa-water"></i>
-                                    <input type="text" placeholder="Tanjung Perak" required>
-                                </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label class="form-label">&nbsp;</label>
+                                <button type="button" class="btn btn-search w-100" onclick="search()">
+                                    <i class="fas fa-search"></i> Cari Tiket
+                                </button>
                             </div>
-                            <div class="input-group">
-                                <label>Tanggal Berlayar</label>
-                                <div class="input-wrapper">
-                                    <i class="fa-regular fa-calendar"></i>
-                                    <input type="date" required>
-                                </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label class="form-label">&nbsp;</label>
+                                <button type="button" class="btn btn-reset w-100" 
+                                        onclick="resetFilter()">
+                                    <i class="fas fa-sync"></i> Reset
+                                </button>
                             </div>
-                            <div class="input-group">
-                                <label>Penumpang</label>
-                                <div class="input-wrapper">
-                                    <i class="fa-solid fa-user"></i>
-                                    <select>
-                                        <option>1 Orang</option>
-                                        <option>2 Orang</option>
-                                        <option>3 Orang</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <button type="submit" class="btn-search">
-                                <i class="fa-solid fa-magnifying-glass"></i> Cari Kapal
-                            </button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
+    </section>
 
-        <!-- Search Results (Hidden initially) -->
-        <section id="results-section" class="container">
-            <h2 class="section-title">
-                <i class="fa-solid fa-list-check"></i> Hasil Pencarian <span id="result-type"></span>
-            </h2>
+    <!-- Results Section -->
+    <section class="py-5" id="results">
+        <div class="container">
+            <div class="section-header mb-4">
+                <h2 class="fw-bold"><i class="fas fa-list"></i> Hasil Pencarian Tiket</h2>
+                <p class="text-muted">Menampilkan <span id="resultCount" class="fw-bold">0</span> hasil</p>
+            </div>
             
-            <div id="loading" class="loading-spinner" style="display: none;">
-                <div class="spinner"></div>
-                <p>Sedang mencari ketersediaan tiket realtime...</p>
-            </div>
-
-            <div id="results-container" class="ticket-list">
-                <!-- Results will be injected here via JS -->
-            </div>
-        </section>
-
-        <!-- Features Section -->
-        <section class="container">
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon"><i class="fa-solid fa-shield-halved"></i></div>
-                    <h3>Transaksi Aman</h3>
-                    <p>Sistem keamanan terjamin dan kerjasama resmi dengan penyedia jasa.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon"><i class="fa-solid fa-bolt"></i></div>
-                    <h3>Proses Cepat</h3>
-                    <p>E-tiket langsung dikirim ke email Anda setelah pembayaran berhasil.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon"><i class="fa-solid fa-headset"></i></div>
-                    <h3>Layanan 24/7</h3>
-                    <p>Tim support kami siap membantu Anda kapan saja dimanapun.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon"><i class="fa-solid fa-tags"></i></div>
-                    <h3>Harga Terbaik</h3>
-                    <p>Jaminan harga termurah tanpa biaya tersembunyi.</p>
+            <div class="results-container">
+                <div class="table-responsive">
+                    <table class="table table-hover table-striped">
+                        <thead class="table-light">
+                            <tr>
+                                <th><i class="fas fa-car"></i> Transportasi</th>
+                                <th><i class="fas fa-route"></i> Rute</th>
+                                <th><i class="fas fa-building"></i> Provider</th>
+                                <th><i class="fas fa-clock"></i> Berangkat</th>
+                                <th><i class="fas fa-clock"></i> Tiba</th>
+                                <th class="text-end"><i class="fas fa-tag"></i> Harga</th>
+                            </tr>
+                        </thead>
+                        <tbody id="priceTable">
+                            <!-- Data akan dimuat di sini -->
+                        </tbody>
+                    </table>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Promo Section -->
-        <section class="container" style="margin-top: 40px;">
-            <div style="background: linear-gradient(90deg, #0056b3, #00a8ff); border-radius: 12px; padding: 40px; color: white; display: flex; align-items: center; justify-content: space-between; box-shadow: var(--shadow-md);">
-                <div style="max-width: 600px;">
-                    <h2 style="font-size: 2rem; margin-bottom: 10px;">Promo Spesial Kemerdekaan!</h2>
-                    <p style="margin-bottom: 20px; font-size: 1.1rem;">Diskon hingga 50% untuk semua rute penerbangan domestik. Kode voucher: MJR50.</p>
-                    <button class="btn-primary" style="background: white; color: var(--primary-color);">Lihat Detail Promo</button>
+    <!-- Statistics Section -->
+    <section class="py-5 bg-light" id="stats">
+        <div class="container">
+            <div class="section-header text-center mb-5">
+                <h2 class="fw-bold"><i class="fas fa-chart-line"></i> Statistik Harga Transportasi</h2>
+                <p class="text-muted">Rata-rata harga tiket berdasarkan jenis transportasi</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="stat-card stat-card-plane">
+                        <div class="stat-icon">
+                            <i class="fas fa-plane"></i>
+                        </div>
+                        <h4>Pesawat</h4>
+                        <p class="stat-value" id="avgPesawat">Rp 0</p>
+                        <small class="text-muted">Harga rata-rata</small>
+                    </div>
                 </div>
-                <div style="font-size: 8rem; opacity: 0.2;">
-                    <i class="fa-solid fa-plane-departure"></i>
+                <div class="col-md-4">
+                    <div class="stat-card stat-card-train">
+                        <div class="stat-icon">
+                            <i class="fas fa-train"></i>
+                        </div>
+                        <h4>Kereta Api</h4>
+                        <p class="stat-value" id="avgKereta">Rp 0</p>
+                        <small class="text-muted">Harga rata-rata</small>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="stat-card stat-card-bus">
+                        <div class="stat-icon">
+                            <i class="fas fa-bus"></i>
+                        </div>
+                        <h4>Bus</h4>
+                        <p class="stat-value" id="avgBus">Rp 0</p>
+                        <small class="text-muted">Harga rata-rata</small>
+                    </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-    </main>
+    <!-- About Section -->
+    <section class="py-5" id="about">
+        <div class="container">
+            <div class="section-header text-center mb-5">
+                <h2 class="fw-bold">✨ Kenapa Pilih MJR Travel?</h2>
+                <p class="text-muted">Keunggulan platform kami untuk kemudahan Anda</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-3">
+                    <div class="feature-card">
+                        <div class="feature-icon" style="background: linear-gradient(135deg, var(--primary), var(--secondary));">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h5>Cepat & Mudah</h5>
+                        <p>Cari dan bandingkan harga dalam hitungan detik tanpa ribet</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="feature-card">
+                        <div class="feature-icon" style="background: linear-gradient(135deg, #2c5282, #4a90e2);">
+                            <i class="fas fa-tags"></i>
+                        </div>
+                        <h5>Harga Terbaik</h5>
+                        <p>Dapatkan harga kompetitif dari berbagai provider transportasi</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="feature-card">
+                        <div class="feature-icon" style="background: linear-gradient(135deg, #e53e3e, #dd6b20);">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                        <h5>Perbandingan Lengkap</h5>
+                        <p>Bandingkan semua opsi transportasi dalam satu platform</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="feature-card">
+                        <div class="feature-icon" style="background: linear-gradient(135deg, #2d3748, #4a5568);">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h5>Aman & Terpercaya</h5>
+                        <p>Data dari provider resmi dan terupdate setiap saat</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
-    <footer>
+    <footer class="py-5">
         <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <h4>MJR Travel</h4>
-                    <p>Penyedia layanan tiket perjalanan online terbesar dan terpercaya di Indonesia.</p>
-                    <div style="margin-top: 20px; display: flex; gap: 15px;">
-                        <a href="#"><i class="fa-brands fa-facebook fa-lg"></i></a>
-                        <a href="#"><i class="fa-brands fa-twitter fa-lg"></i></a>
-                        <a href="#"><i class="fa-brands fa-instagram fa-lg"></i></a>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="footer-content">
+                        <div class="footer-logo">
+                            <i class="fas fa-plane-departure"></i> MJR Travel Agency
+                        </div>
+                        <p>
+                            Platform perbandingan harga tiket transportasi terlengkap di Indonesia. 
+                            Cari tiket tanpa ribet dengan layanan terpercaya.
+                        </p>
+                        <div class="social-links mt-3">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
                     </div>
                 </div>
-                <div class="footer-col">
-                    <h4>Produk</h4>
-                    <ul>
-                        <li><a href="#">Tiket Pesawat</a></li>
-                        <li><a href="#">Tiket Kereta Api</a></li>
-                        <li><a href="#">Tiket Bus & Travel</a></li>
-                        <li><a href="#">Tiket Kapal Laut</a></li>
-                        <li><a href="#">Paket Liburan</a></li>
-                    </ul>
+                <div class="col-md-2 mb-4">
+                    <h5 class="mb-3">Navigasi</h5>
+                    <div class="footer-links">
+                        <a href="#home">Beranda</a>
+                        <a href="#search">Cari Tiket</a>
+                        <a href="#stats">Statistik</a>
+                        <a href="#about">Tentang Kami</a>
+                    </div>
                 </div>
-                <div class="footer-col">
-                    <h4>Dukungan</h4>
-                    <ul>
-                        <li><a href="#">Cara Pemesanan</a></li>
-                        <li><a href="#">Hubungi Kami</a></li>
-                        <li><a href="#">Kebijakan Privasi</a></li>
-                        <li><a href="#">Syarat & Ketentuan</a></li>
-                        <li><a href="#">FAQ</a></li>
-                    </ul>
+                <div class="col-md-2 mb-4">
+                    <h5 class="mb-3">Transportasi</h5>
+                    <div class="footer-links">
+                        <a href="#">Pesawat</a>
+                        <a href="#">Kereta Api</a>
+                        <a href="#">Bus</a>
+                        <a href="#">Kapal Laut</a>
+                        <a href="#">Shuttle</a>
+                    </div>
                 </div>
-                <div class="footer-col">
-                    <h4>Download Aplikasi</h4>
-                    <p style="margin-bottom: 10px;">Dapatkan kemudahan akses di smartphone Anda.</p>
-                    <div style="display: flex; gap: 10px;">
-                        <button style="background: #333; border: 1px solid #555; color: white; padding: 8px 15px; border-radius: 5px; cursor: pointer;">
-                            <i class="fa-brands fa-apple"></i> App Store
-                        </button>
-                        <button style="background: #333; border: 1px solid #555; color: white; padding: 8px 15px; border-radius: 5px; cursor: pointer;">
-                            <i class="fa-brands fa-google-play"></i> Google Play
-                        </button>
+                <div class="col-md-4 mb-4">
+                    <h5 class="mb-3">Kontak</h5>
+                    <div class="footer-links">
+                        <p><i class="fas fa-map-marker-alt me-2"></i> Jakarta, Indonesia</p>
+                        <p><i class="fas fa-phone-alt me-2"></i> +62 812-3456-7890</p>
+                        <p><i class="fas fa-envelope me-2"></i> info@mjrtravel.com</p>
+                        <p class="mt-3">
+                            <i class="fas fa-copyright me-1"></i> 2026 MJR Travel Agency. All Rights Reserved.
+                        </p>
                     </div>
                 </div>
             </div>
-            <div class="footer-bottom">
-                &copy; 2023 MJR Travel. Hak Cipta Dilindungi.
+            <div class="copyright">
+                <p>Data dalam website ini bersifat contoh. Untuk harga aktual, silakan hubungi provider resmi.</p>
             </div>
         </div>
     </footer>
 
-    <!-- JavaScript Logic -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Fungsi untuk mengganti Tab (Pesawat, Kereta, Bus, Kapal)
-        function switchTab(tabId, element) {
-            // Hapus kelas active dari semua tombol
-            const tabs = document.querySelectorAll('.tab-btn');
-            tabs.forEach(tab => tab.classList.remove('active'));
-            
-            // Tambah kelas active ke tombol yang diklik
-            element.classList.add('active');
-
-            // Sembunyikan semua konten tab
-            const contents = document.querySelectorAll('.tab-content');
-            contents.forEach(content => content.classList.remove('active'));
-
-            // Tampilkan konten tab yang dipilih
-            document.getElementById(tabId).classList.add('active');
-
-            // Reset hasil pencarian jika berpindah tab
-            document.getElementById('results-section').style.display = 'none';
-        }
-
-        // Fungsi simulasi pencarian realtime
-        function handleSearch(event, type) {
-            event.preventDefault(); // Mencegah reload halaman
-            
-            const resultsSection = document.getElementById('results-section');
-            const loading = document.getElementById('loading');
-            const container = document.getElementById('results-container');
-            const resultType = document.getElementById('result-type');
-
-            // Tampilkan bagian hasil dan loading
-            resultsSection.style.display = 'block';
-            loading.style.display = 'flex';
-            container.innerHTML = ''; // Kosongkan hasil lama
-            resultType.innerText = type;
-
-            // Scroll ke bagian hasil
-            resultsSection.scrollIntoView({ behavior: 'smooth' });
-
-            // Simulasi delay API (2 detik)
-            setTimeout(() => {
-                loading.style.display = 'none';
-                generateDummyResults(type);
-            }, 2000);
-        }
-
-        // Fungsi menghasilkan data dummy berdasarkan tipe pencarian
-        function generateDummyResults(type) {
-            const container = document.getElementById('results-container');
-            let data = [];
-
-            if (type === 'Pesawat') {
-                data = [
-                    { name: 'Garuda Indonesia', time: '07:00 - 09:50', duration: '1j 50m', price: 'Rp 1.250.000', icon: 'fa-plane' },
-                    { name: 'Lion Air', time: '10:30 - 13:20', duration: '1j 50m', price: 'Rp 850.000', icon: 'fa-plane' },
-                    { name: 'Citilink', time: '14:00 - 16:50', duration: '1j 50m', price: 'Rp 795.000', icon: 'fa-plane' },
-                    { name: 'Batik Air', time: '18:15 - 21:05', duration: '1j 50m', price: 'Rp 950.000', icon: 'fa-plane' }
-                ];
-            } else if (type === 'Kereta Api') {
-                data = [
-                    { name: 'Taksaka (Eksekutif)', time: '08:00 - 13:30', duration: '5j 30m', price: 'Rp 550.000', icon: 'fa-train' },
-                    { name: 'Argo Bromo (Eksekutif)', time: '15:00 - 20:30', duration: '5j 30m', price: 'Rp 580.000', icon: 'fa-train' },
-                    { name: 'Fajar Utama (Bisnis)', time: '06:00 - 12:00', duration: '6j 00m', price: 'Rp 350.000', icon: 'fa-train' }
-                ];
-            } else if (type === 'Bus') {
-                data = [
-                    { name: 'Rosalia Indah (Executive)', time: '19:00 - 23:30', duration: '4j 30m', price: 'Rp 150.000', icon: 'fa-bus' },
-                    { name: 'Sinar Jaya (Double Decker)', time: '20:00 - 00:30', duration: '4j 30m', price: 'Rp 135.000', icon: 'fa-bus' }
-                ];
-            } else if (type === 'Kapal Laut') {
-                data = [
-                    { name: 'KM. Labobar', time: '16:00 - 10:00+1', duration: '18j 00m', price: 'Rp 250.000', icon: 'fa-ship' },
-                    { name: 'KM. Dorolonda', time: '20:00 - 14:00+1', duration: '18j 00m', price: 'Rp 275.000', icon: 'fa-ship' }
-                ];
+        // Sample data for demo
+        const sampleData = [
+            {
+                transport_type: 'pesawat',
+                origin: 'Jakarta',
+                destination: 'Bali',
+                price: 850000,
+                provider: 'Garuda Indonesia',
+                departure_time: '08:00',
+                arrival_time: '10:30'
+            },
+            {
+                transport_type: 'pesawat',
+                origin: 'Jakarta',
+                destination: 'Bali',
+                price: 650000,
+                provider: 'Lion Air',
+                departure_time: '10:00',
+                arrival_time: '12:30'
+            },
+            {
+                transport_type: 'kereta',
+                origin: 'Jakarta',
+                destination: 'Bandung',
+                price: 120000,
+                provider: 'Argo Parahyangan',
+                departure_time: '08:00',
+                arrival_time: '11:00'
+            },
+            {
+                transport_type: 'bus',
+                origin: 'Jakarta',
+                destination: 'Bandung',
+                price: 85000,
+                provider: 'Primajasa',
+                departure_time: '08:00',
+                arrival_time: '11:30'
+            },
+            {
+                transport_type: 'kapal',
+                origin: 'Jakarta',
+                destination: 'Batam',
+                price: 350000,
+                provider: 'Pelayaran Nasional',
+                departure_time: '09:00',
+                arrival_time: '15:00'
+            },
+            {
+                transport_type: 'shuttle',
+                origin: 'Jakarta',
+                destination: 'Bandara Soetta',
+                price: 70000,
+                provider: 'Traveloka Shuttle',
+                departure_time: '07:00',
+                arrival_time: '08:00'
             }
+        ];
 
-            // Generate HTML untuk setiap kartu tiket
-            data.forEach(item => {
-                const card = document.createElement('div');
-                card.className = 'ticket-card';
-                card.innerHTML = `
-                    <div class="ticket-info">
-                        <div class="carrier-logo"><i class="fa-solid ${item.icon}"></i></div>
-                        <div class="route-details">
-                            <div class="route-point">
-                                <h3>07:00</h3>
-                                <span>Jakarta</span>
-                            </div>
-                            <div class="duration">
-                                <span>${item.duration}</span>
-                                <div class="duration-line"></div>
-                                <span>Langsung</span>
-                            </div>
-                            <div class="route-point" style="text-align: right;">
-                                <h3>09:50</h3>
-                                <span>Bali</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="ticket-action">
-                        <span class="price">${item.price}</span>
-                        <button class="btn-primary" onclick="alert('Lanjut ke halaman pembayaran untuk ${item.name}')">Pilih</button>
-                    </div>
-                `;
-                container.appendChild(card);
+        // Simulate data loading
+        window.onload = function() {
+            setTimeout(() => {
+                displayResults(sampleData);
+                loadStats();
+            }, 500);
+        };
+
+        function search() {
+            const transportType = document.getElementById('transportType').value;
+            const origin = document.getElementById('origin').value;
+            const destination = document.getElementById('destination').value;
+            
+            // Validasi: Tujuan harus dipilih
+            if (!destination) {
+                alert('⚠️ Silakan pilih kota tujuan terlebih dahulu!');
+                return;
+            }
+            
+            // Filter data dengan tujuan yang SAMA PERSIS
+            const filteredData = sampleData.filter(item => {
+                return (
+                    (transportType === 'all' || item.transport_type === transportType) &&
+                    (origin === '' || item.origin === origin) &&
+                    item.destination === destination
+                );
             });
             
-            if(data.length === 0) {
-                container.innerHTML = '<p style="text-align:center; padding: 20px;">Maaf, tiket tidak tersedia untuk rute ini.</p>';
+            displayResults(filteredData);
+        }
+
+        function displayResults(data) {
+            const tbody = document.getElementById('priceTable');
+            tbody.innerHTML = '';
+            
+            if (data.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="6" class="text-center py-5">
+                            <i class="fas fa-inbox text-muted" style="font-size: 3rem;"></i>
+                            <p class="mt-3 text-muted">Tidak ada tiket yang tersedia untuk rute ini</p>
+                        </td>
+                    </tr>
+                `;
+                document.getElementById('resultCount').textContent = '0';
+                return;
             }
+            
+            data.forEach(item => {
+                const row = document.createElement('tr');
+                
+                // Format price
+                const formattedPrice = new Intl.NumberFormat('id-ID', {
+                    style: 'currency',
+                    currency: 'IDR',
+                    minimumFractionDigits: 0
+                }).format(item.price);
+                
+                row.innerHTML = `
+                    <td class="transport-type">
+                        <i class="${getTransportIcon(item.transport_type)}"></i>
+                        ${formatTransportType(item.transport_type)}
+                    </td>
+                    <td><strong>${item.origin}</strong> → ${item.destination}</td>
+                    <td>${item.provider}</td>
+                    <td>${item.departure_time || '-'}</td>
+                    <td>${item.arrival_time || '-'}</td>
+                    <td class="text-end price">${formattedPrice}</td>
+                `;
+                
+                tbody.appendChild(row);
+            });
+            
+            document.getElementById('resultCount').textContent = data.length;
+        }
+
+        function getTransportIcon(type) {
+            const icons = {
+                'pesawat': 'fa-plane',
+                'kereta': 'fa-train',
+                'bus': 'fa-bus',
+                'kapal': 'fa-ship',
+                'shuttle': 'fa-shuttle-van'
+            };
+            return icons[type] || 'fa-car';
+        }
+
+        function formatTransportType(type) {
+            const mapping = {
+                'pesawat': 'Pesawat',
+                'kereta': 'Kereta Api',
+                'bus': 'Bus',
+                'kapal': 'Kapal Laut',
+                'shuttle': 'Shuttle'
+            };
+            return mapping[type] || type;
+        }
+
+        function loadStats() {
+            // Simulate statistics
+            document.getElementById('avgPesawat').textContent = 'Rp 750.000';
+            document.getElementById('avgKereta').textContent = 'Rp 135.000';
+            document.getElementById('avgBus').textContent = 'Rp 95.000';
+        }
+
+        function resetFilter() {
+            document.getElementById('transportType').value = 'all';
+            document.getElementById('origin').value = '';
+            document.getElementById('destination').value = '';
+            document.getElementById('travelDate').value = '';
+            displayResults(sampleData);
         }
     </script>
 </body>
